@@ -1,0 +1,46 @@
+<div class="container">
+    <a routerLink="/ajouterFormation"> <button class="btn btn-primary">Ajouter Formation </button></a>
+    <div class="row">
+        <div class="col-xs-12 ">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Icon</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Formateur</th>
+                        <th scope="col">prix</th>
+                        <th scope="col">Heure/Semaine</th>
+                        <th scope="col" class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let f of formationData ;index as index">
+                        <th scope="row">{{index+1}}</th>
+                        <td><img [src]="f.icone" alt=""></td>
+                        <td>{{f.titre}}</td>
+                        <td>{{f.formateurNom}} {{f.formateurPrenom}}</td>
+                        <td>{{f.prix}} DT</td>
+                        <td>{{f.totalheure}}h/{{f.totalmois}}mois</td>
+                        <td>
+                            <button class="waves-light btn btn-sm btn-info" [routerLink]="['/formation',f.idFormation]"> <i class="fas fa-info-circle "
+                                    style="color: white;"></i></button>
+                            &nbsp;
+                            <button class="waves-light btn btn-sm btn-success"  [routerLink]="['/modifierFormation',f.idFormation]"> <i class="fa fa-pencil"></i></button>
+                            &nbsp;
+                            
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-danger" (click)="deleteFormation(f.idFormation,index)">
+                                <i class="fa fa-trash"> </i>
+                            </button>
+
+                            <!-- Modal -->
+                            
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

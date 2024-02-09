@@ -44,7 +44,7 @@ exports.getFormateurById = (req, res) => {
         if (result.length > 0) {
             return res.status(200).send({
                 message: "Données du formateur récupérées avec succès.",
-                data: result
+                data: result[0]
             });
         } else {
             // Si le formateur n'est pas trouvé, renvoyer une réponse avec le code de statut 404 (Non trouvé)
@@ -56,12 +56,12 @@ exports.getFormateurById = (req, res) => {
 };
 
 //create data
-exports.createFormateur = (req, res) => {
+exports.postFormateur = (req, res) => {
     let nom = req.body.nom;
     let prenom = req.body.prenom;
     let numTel = req.body.numTel;
-
-    let qr = `INSERT INTO formateur(nom, prenom, numTel) VALUES ("${nom}", "${prenom}", "${numTel}")`;
+    let email=req.body.email
+    let qr = `INSERT INTO formateur(nom, prenom, numTel,email) VALUES ("${nom}", "${prenom}", "${numTel}","${email}")`;
     db.query(qr, (err, result) => {
         if (err) {
             console.error(err);
@@ -81,7 +81,10 @@ exports.createFormateur = (req, res) => {
 exports.updateFormateur= (req, res) =>  {
     let idFormateur=req.params.idFormateur;
     let nom = req.body.nom;
-    let qr=`update formateur set nom="${nom}" where idFormateur=${idFormateur}`
+    let prenom = req.body.prenom;
+    let numTel = req.body.numTel;
+    let email=req.body.email
+    let qr=`update formateur set nom="${nom}",prenom="${prenom}",numTel="${numTel}",email="${email}" where idFormateur=${idFormateur}`
     db.query(qr,(err,result)=>{
         if(err){console.log(err);}
         res.send({

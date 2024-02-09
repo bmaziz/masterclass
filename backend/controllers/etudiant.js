@@ -56,14 +56,13 @@ exports.connexion = (req, res) => {
 
         // Vérifier si le mot de passe fourni correspond au mot de passe hashé dans la base de données
         bcrypt.compare(password, hashedPassword, (bcryptErr, bcryptResult) => {
-            console.log(hashedPassword,"",password);
             if (bcryptErr) {
                 console.error(bcryptErr);
                 return res.status(500).send({
                     message: "Une erreur s'est produite lors de la vérification du mot de passe."
                 });
             }
-            console.log(bcryptResult);
+
             // Si les mots de passe correspondent
             if (bcryptResult) {
                 
@@ -72,6 +71,7 @@ exports.connexion = (req, res) => {
                 // Renvoyer le token JWT
                 return res.status(200).send({
                     message: "Connexion réussie.",
+                    data:result
                      
                 });
             } else {

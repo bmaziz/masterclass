@@ -1,0 +1,28 @@
+<button (click)="retournerPagePrecedente()">Retourner à la page précédente</button>
+<form [formGroup]="questionForm" class="mt-3">
+    <div class="form-group">
+        <label for="question">Question{{j+1}}:</label>
+        <input type="text" id="question" class="form-control" formControlName="question">
+    </div>
+
+    <div formArrayName="reponses">
+        <div *ngFor="let d of reponses.controls;  index as i">
+            <div [formGroupName]="i">
+                Reponse{{i+1}}: <input type="text" formControlName="reponse">
+                Bonne reponse: <input type="checkbox" formControlName="verite">
+            </div>
+        </div>
+
+    </div>
+
+    <button class="btn btn-primary" (click)="questionPrecedent()" *ngIf="j!=0 && !ajouter">Question presedent</button>
+    <button class="btn btn-primary" [disabled]="formulaireInvalide()" (click)="modifierQuestion()"
+        *ngIf="!ajouter">Enregistrer modification</button>
+    <button class="btn btn-primary" (click)="questionSuivant()" *ngIf="j!=l && !ajouter">Question suivant</button>
+    <button class="btn btn-primary" [disabled]="formulaireInvalide()" (click)="ouvrirAjout()"
+        *ngIf="j==l && !ajouter">Ajouter question</button>
+    <button class="btn btn-primary" (click)="questionPrecedent()"
+        *ngIf="ajouter">Annuler</button>
+    <button class="btn btn-primary" [disabled]="formulaireInvalide()" (click)="ajouterQuestion()"
+        *ngIf="ajouter">Enregistrer</button>
+</form>

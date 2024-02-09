@@ -4,7 +4,7 @@ const formateurController= require('../controllers/formateur');
 
 router.get('/',formateurController.getAllFormateur);
 router.get('/:idFormateur',formateurController.getFormateurById);
-router.post('/',formateurController.createFormateur);
+router.post('/',formateurController.postFormateur);
 router.put('/:idFormateur',formateurController.updateFormateur);
 router.delete('/:idFormateur',formateurController.deleteFormateur);
 

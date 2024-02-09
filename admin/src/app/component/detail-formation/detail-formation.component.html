@@ -1,0 +1,80 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-9 offset-md-1">
+            <h2 class="text-center mb-4">Détails de la formation</h2>
+            <div class="card">
+                <img [src]="formationData.image" class="card-img-top" alt="Image de la formation">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{formationData.titre}}</h5>
+                    <p class="card-text">{{formationData.apropos}}</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Date de début:</strong>
+                            {{formationData.dateDebut|date:'fullDate'}}</li>
+                        <li class="list-group-item"><strong>Durée:</strong>
+                            {{formationData.totalheure}}H/{{formationData.totalmois}}Mois</li>
+                        <li class="list-group-item"><strong>Prix:</strong> {{formationData.prix}}</li>
+                        <li class="list-group-item"><strong>Formateur:</strong> {{formationData.idFormateur}}</li>
+                        <li class="list-group-item"><strong>Certificat:</strong> <span
+                                *ngIf="formationData.certificat">Oui</span><span
+                                *ngIf="!formationData.certificat">Non</span></li>
+                        <li class="list-group-item"><strong>Attestation:</strong> <span
+                                *ngIf="formationData.attestation">Oui</span><span
+                                *ngIf="!formationData.attestation">Non</span></li>
+                                <button class="waves-light btn btn-sm btn-success"  [routerLink]="['/modifierFormation',idFormation]"> <i class="fa fa-pencil"></i></button>
+                                &nbsp;
+                            
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-danger" (click)="deleteFormation()">
+                                <i class="fa fa-trash"> </i>
+                            </button>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="mt-5">
+                <h3 class="mb-4">Liste des étudiants inscrits</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Numero</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let e of formationData.participants,index as index">
+                            <th scope="row">{{index+1}}</th>
+                            <td>{{e.nom}}</td>
+                            <td>{{e.prenom}}</td>
+                            <td>{{e.numTel}}</td>
+                            <td>{{e.email}}</td>
+                            <td>
+                                <button type="button" class="btn btn-danger">
+                                    <i class="fa fa-trash"> </i>
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-5">
+                <h3 class="mb-4">Liste des quiz</h3>
+                <ul id="quiz-list">
+                  <li *ngFor="let q of listeQuiz,index as i">Quiz {{i+1}}  
+                    <button class="waves-light btn btn-sm btn-success"  [routerLink]="['/modifierQuiz',q.idQuiz]"> <i class="fa fa-pencil"></i></button>
+                    &nbsp;
+                    <button type="button" class="btn btn-danger" (click)="deleteQuiz(q.idQuiz,i)"><i class="fa fa-trash"> </i></button>
+                    
+                </li>
+                </ul>
+                
+                <button id="add-quiz-btn" class="btn btn-primary mt-3" [routerLink]="['/ajouterQuiz',idFormation]">Ajouter un quiz</button>
+              
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="container">
+    <a routerLink="/ajouterFormateur"> <button class="btn btn-primary">Ajouter Formateur </button></a>
+    <div class="row">
+        <div class="col-xs-12 ">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prenom</th>
+                        <th scope="col">Numero</th>
+                        <th scope="col">Email</th>
+                        <th scope="col" class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let f of formateurData ;index as index">
+                        <th scope="row">{{index+1}}</th> 
+                        <td>{{f.nom}}</td>
+                        <td>{{f.prenom}}</td>
+                        <td>{{f.numTel}}</td>
+                        <td>{{f.email}}</td>
+                        <td>
+                            &nbsp;
+                            <button class="waves-light btn btn-sm btn-success"  [routerLink]="['/modifierFormateur',f.idFormateur]"> <i class="fa fa-pencil"></i></button>
+                            &nbsp;
+                            
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-danger" (click)="deleteFormateur(f.idFormateur,index)">
+                                <i class="fa fa-trash"> </i>
+                            </button>
+
+                            
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

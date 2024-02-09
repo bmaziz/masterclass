@@ -3,7 +3,7 @@ const db = require('../connection/connection')
 
 //get all data
 exports.getAllFormation = (req, res) => {
-    let qr = "select idFormation,titre,image,icone,description from formation";
+    let qr = "select idFormation,titre,formation.image,icone,description,prix,totalheure,totalmois,formateur.nom as formateurNom,formateur.prenom as formateurPrenom from formation,formateur where formateur.idformateur=formation.idFormateur";
     db.query(qr, (err, result) => {
         if (err) {
             console.error(err);
@@ -47,7 +47,7 @@ exports.getFormationById = (req, res) => {
 
         let formation = result[0];
         let qr2 = `
-            SELECT idEtudiant, accepter FROM inscrireformation WHERE idFormation = ${idFormation};
+            SELECT inscrireformation.idEtudiant,nom,prenom,numTel,email FROM inscrireformation,etudiant WHERE inscrireformation.idEtudiant=etudiant.idEtudiant and accepter=1 and idFormation = ${idFormation};
             SELECT titre, description FROM programme WHERE idFormation = ${idFormation};
             SELECT type,description FROM objectif WHERE idFormation=${idFormation}
         `;
@@ -77,10 +77,13 @@ exports.createFormation = (req, res) => {
     let totalheure = req.body.totalheure;
     let totalmois = req.body.totalmois;
     let description = req.body.description;
-    let idFormateur = req.body.idFormation;
+    let apropos=req.body.apropos;
+    let idFormateur = req.body.idFormateur;
     let dateDebut = req.body.dateDebut;
-    let qr = `insert into formation(titre,prix,totalheure,totalmois,description,idFormateur,dateDebut)
-    values("${titre}",${prix},${totalheure},${totalmois},'${description}',${idFormateur},'${dateDebut}')`;
+    let image=req.body.image;
+    let icone=req.body.icone;
+    let qr = `insert into formation(titre,prix,totalheure,totalmois,description,idFormateur,dateDebut,apropos,image,icone)
+    values("${titre}",${prix},${totalheure},${totalmois},'${description}',${idFormateur},'${dateDebut}','${apropos}','${image}','${icone}')`;
     db.query(qr, (err, result) => {
         if (err) {
             console.error(err);
@@ -97,9 +100,19 @@ exports.createFormation = (req, res) => {
 }
 //update Formation
 exports.updateFormation = (req, res) => {
-    let idFormation = req.params.idFormation;
+    let idFormation=req.params.idFormation
     let titre = req.body.titre;
-    let qr = `update formation set titre="${titre}" where idFormation=${idFormation}`
+    let prix = req.body.prix;
+    let totalheure = req.body.totalheure;
+    let totalmois = req.body.totalmois;
+    let description = req.body.description;
+    let apropos=req.body.apropos;
+    let idFormateur = req.body.idFormateur;
+    let dateDebut = req.body.dateDebut;
+    let image=req.body.image;
+    let icone=req.body.icone;
+    console.log("dataaa",req.body.dateDebut)
+    let qr = `update formation set titre="${titre}",prix=${prix},totalheure=${totalheure},totalmois=${totalmois},description="${description}",apropos="${apropos}",idFormateur=${idFormateur},image="${image}",icone="${icone}",dateDebut="${dateDebut}" where idFormation=${idFormation}`
     db.query(qr, (err, result) => {
         if (err) { console.log(err); }
         res.send({
@@ -118,3 +131,61 @@ exports.deleteFormation = (req, res) => {
         })
     })
 }
+exports.getDemandeFormation = (req, res) => {
+    let qr = `select i.idFormation,i.idEtudiant,etudiant.nom,etudiant.prenom,formation.titre from inscrireformation as i,formation,etudiant where formation.idFormation=i.idFormation and etudiant.idEtudiant=i.idEtudiant and accepter=0`;
+    db.query(qr, (err, result) => {
+        if (err) { 
+            console.log(err); 
+        }
+        res.send({
+            message: "les demande d'inscription",
+            data:result
+        })
+        
+    })
+}
+exports.accepterDemande= (req, res) => {
+    let idFormation=req.params.idFormation;
+    let idEtudiant=req.params.idEtudiant;
+    let qr = `update inscrireFormation set accepter=1 where idFormation=${idFormation} and idEtudiant=${idEtudiant}`;
+    db.query(qr, (err, result) => {
+        if (err) { 
+            console.log(err); 
+        }
+        res.send({
+            message: "les demande est accepter",
+        })
+        
+    })
+    
+}
+exports.refuserDemande=(req,res)=>{
+    let idFormation=req.params.idFormation;
+    let idEtudiant=req.params.idEtudiant;
+    let qr=`delete from inscrireFormation where idFormation=${idFormation} and idEtudiant=${idEtudiant}`
+    db.query(qr, (err, result) => {
+        if (err) { 
+            console.log(err); 
+        }
+        res.send({
+            message: "les demande est refuser",
+        })
+        
+    })
+    
+}
+exports.postDemande=(req,res)=>{
+    let idFormation=req.params.idFormation;
+    let idEtudiant=req.params.idEtudiant;
+    let qr=`insert into inscrireFormation values(${idFormation},${idEtudiant},0)`
+    db.query(qr, (err, result) => {
+        if (err) { 
+            console.log(err); 
+        }
+        res.send({
+            message: "les demande est enregistrer",
+        })
+        
+    })
+}
+

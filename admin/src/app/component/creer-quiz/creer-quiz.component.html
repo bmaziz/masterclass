@@ -1,0 +1,20 @@
+<form [formGroup]="questionForm" class="mt-3">
+    <div class="form-group">
+      <label for="question">Question{{j}}:</label>
+      <input type="text" id="question" class="form-control" formControlName="question">
+    </div>
+  
+    <div formArrayName="reponses">
+        <div *ngFor="let d of reponses.controls;  index as i">
+            <div [formGroupName]="i">
+                Reponse{{i+1}}: <input type="text" formControlName="reponse">
+                Bonne reponse: <input type="checkbox" formControlName="verite">
+            </div>
+        </div>
+        
+    </div>
+  
+    <button class="btn btn-primary" [disabled]="formulaireInvalide()" (click)="questionSuivant()">Question suivant</button>
+    <button class="btn btn-primary" [disabled]="formulaireInvalide()" (click)="ajouterQuiz()">Ajouter Quiz</button>
+  </form>
+  

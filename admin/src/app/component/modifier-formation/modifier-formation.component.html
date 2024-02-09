@@ -1,0 +1,86 @@
+<button (click)="retournerPagePrecedente()">Retourner à la page précédente</button>
+<div class="container" >
+    <div class="row">
+        <div class="col-9">
+            <h2 class="text-center">Modifier Formation</h2>
+            <form  [formGroup]="formationForm" (submit)="updateFormation()">
+                <div class="mb-1 row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Titre Formation</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control"  formControlName="titre">
+                    </div>
+                  </div>
+                  <div class="mb-1 row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Formateur</label>
+                    <div class="col-sm-8">
+                    <select  formControlName="idFormateur" class="form-control">
+                        <option value="">Choisir Formateur</option>
+                      <option [value]="i.idFormateur" *ngFor="let i of formateurs">
+                          {{i.nom}}
+                      </option>
+                    </select>
+                    </div>
+                  </div>
+                  <div class="mb-1 row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Url image</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control"  formControlName="image">
+                    </div>
+                  </div>
+                  <div class="mb-1 row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">icone</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control"  formControlName="icone">
+                    </div>
+                  </div>
+                  
+                  <div class="mb-1 row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Prix</label>
+                    <div class="col-sm-8">
+                      <input type="number" class="form-control"  formControlName="prix">
+                    </div>
+                  </div>
+                  <div class="mb-1 row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Duree par Heure</label>
+                    <div class="col-sm-8">
+                      <input type="number" class="form-control"   formControlName="totalheure">
+                    </div>
+                  </div>
+
+                  <div class="mb-1 row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Duree par mois</label>
+                    <div class="col-sm-8">
+                      <input type="number" class="form-control"  formControlName="totalmois">
+                    </div>
+                  </div>
+                  
+                  <div class="mb-1 row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Description</label>
+                    <div class="col-sm-8">
+                      <textarea type="text" class="form-control"style="height: 100px;"   formControlName="description"></textarea>
+                    </div>
+                  </div>
+                  <div class="mb-1 row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Apropos</label>
+                    <div class="col-sm-8">
+                      <textarea type="text" class="form-control"style="height: 100px;"   formControlName="apropos"></textarea>
+                    </div>
+                  </div>
+                 
+                  
+                   <div class="mb-1 row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Date Debut</label>
+                    <div class="col-sm-8">
+                      <input type="date" class="form-control"  formControlName="dateDebut">
+                    </div>
+                  </div>
+                  
+                <div>
+                    <button class="btn btn-success text-center" [disabled]="formationForm.invalid" type="submit">Modifier</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
