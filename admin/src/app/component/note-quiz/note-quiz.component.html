@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Notes de Quiz</h2>
+    <!-- Nom du Quiz en dehors du tableau -->
+    <p>Nom du Quiz: Quiz 1</p>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nom de l'Étudiant</th>
+          <th>Date</th>
+          <th>Note</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let n of notesQuiz">
+          <td>{{n.nom}} {{n.prenom}}</td>
+          <td>{{n.date}}</td>
+          <td>{{n.note}}</td>
+        </tr>
+        <!-- Ajoutez plus de lignes pour plus d'étudiants -->
+      </tbody>
+    </table>
+  </div>

@@ -29,4 +29,7 @@ export class QuizService {
     
     return this.http.post(this.URL+"/question/"+idQuiz,data)
   }
+  getNoteQuiz(idQuiz:number):Observable<any>{
+    return this.http.get(this.URL+"/note/"+idQuiz)
+  }
 }

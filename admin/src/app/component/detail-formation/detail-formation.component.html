@@ -65,9 +65,14 @@
                 <h3 class="mb-4">Liste des quiz</h3>
                 <ul id="quiz-list">
                   <li *ngFor="let q of listeQuiz,index as i">Quiz {{i+1}}  
+                    &nbsp;
+                    <button type="button" class="btn btn-primary" [routerLink]="['/noteQuiz',q.idQuiz]">Note </button>
+                    
+                    &nbsp;
                     <button class="waves-light btn btn-sm btn-success"  [routerLink]="['/modifierQuiz',q.idQuiz]"> <i class="fa fa-pencil"></i></button>
                     &nbsp;
                     <button type="button" class="btn btn-danger" (click)="deleteQuiz(q.idQuiz,i)"><i class="fa fa-trash"> </i></button>
+
                     
                 </li>
                 </ul>

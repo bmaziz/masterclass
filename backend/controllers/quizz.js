@@ -99,47 +99,33 @@ exports.postQuestion = (req, res) => {
         }
 
     })
-
-
-
-
-
     return res.status(201).send({
         message: "Question insérées avec succès."
     });
 
 };
-//Ajouter question
-// exports.postQuestion = (req, res) => {
-//     let idQuiz = req.params.idQuiz
-//     let question = req.body.question;
-//     let reponses = req.body.reponses;
-//     let qr = `insert into question(libelle,idQuiz) values("${question}",${idQuiz})`
-//     db.query(qr, (err, result) => {
+exports.postNote = (req, res) => {
+    let idQuiz = req.params.idQuiz
+    let idEtudiant = req.params.idEtudiant
+    let date = req.body.date;
+    let note = req.body.note
+    let qr = `insert into noteQuiz(idQuiz,idEtudiant,date,note) values(${idQuiz},${idEtudiant},'${date}',${note})`
+    db.query(qr, (err, result) => {
 
-//         if (err) {
-//             console.error(err);
-//             // Envoyer une réponse avec le code de statut 500 en cas d'erreur interne du serveur lors de l'insertion des données
-//             return res.status(500).send({
-//                 message: "Une erreur s'est produite lors de l'insertion des données de Quiz."
-//             });
-//         }
-//         console.log(result.insertId);
-//         for (let index = 0; index < reponses.length; index++) {
-//             const element = reponses[index];
-//             let qr = `insert into reponse(libelle,verite,idQuestion) values("${element.reponse}",${element.verite},${result.insertId})`
-//             db.query(qr, (err2, result1) => {
+        if (err) {
+            console.error(err);
+            // Envoyer une réponse avec le code de statut 500 en cas d'erreur interne du serveur lors de l'insertion des données
+            return res.status(500).send({
+                message: "Une erreur s'est produite lors de l'insertion des données de note."
+            });
+        }
+        return res.status(201).send({
+            message: "Note insérées avec succès."
+        });
+    })
+    
 
-//             })
-
-//         }
-//         // Envoyer une réponse avec le code de statut 201 pour indiquer que les données ont été insérées avec succès
-//         return res.status(201).send({
-//             message: "Question insérées avec succès."
-//         });
-//     })
-
-// };
+};
 //get questions by quiz
 exports.getQuestionByQuiz = (req, res) => {
     let idQuiz = req.params.idQuiz;
@@ -194,7 +180,6 @@ exports.getQuizByFormation = (req, res) => {
     // Query for questions
     db.query(qrQuiz, (err, result) => {
         if (err) {
-            console.error(err);
             return res.status(500).send({
                 message: "Une erreur s'est produite lors de la récupération des questions."
             });
@@ -253,4 +238,50 @@ exports.putQuestion = (req, res) => {
         });
     });
 }
-
+exports.getNoteQuiz = (req, res) => {
+    let idQuiz = req.params.idQuiz;
+    let qr = `Select date,note,nom,prenom from notequiz,etudiant where etudiant.idEtudiant=notequiz.idEtudiant and idQuiz=${idQuiz} `
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send({
+                message: "Une erreur s'est produite lors de la récupération des note."
+            });
+        }
+        if (result.length > 0) {
+            return res.status(200).send({
+                message: "Notes récupérées avec succès",
+                data: result
+            })
+        }
+        else {
+            return res.status(404).send({
+                message: "Aucune note n'a été trouvée."
+            });
+        }
+    })
+}
+exports.getNoteQuizByEtudiant = (req, res) => {
+    let idQuiz = req.params.idQuiz;
+    let idEtudiant = req.params.idEtudiant
+    let qr = `Select date,note from notequiz where idEtudiant=${idEtudiant} and idQuiz=${idQuiz} `
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send({
+                message: "Une erreur s'est produite lors de la récupération des note."
+            });
+        }
+        if (result.length > 0) {
+            return res.status(200).send({
+                message: "Notes récupérées avec succès",
+                data: result
+            })
+        }
+        else {
+            return res.status(404).send({
+                message: "Aucune note n'a été trouvée."
+            });
+        }
+    })
+}

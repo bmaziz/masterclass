@@ -11,12 +11,14 @@ import { ModifierFormateurComponent } from './component/modifier-formateur/modif
 import { CreerQuizComponent } from './component/creer-quiz/creer-quiz.component';
 import { ModifierQuizComponent } from './component/modifier-quiz/modifier-quiz.component';
 import { DemandeFormationComponent } from './component/demande-formation/demande-formation.component';
+import { NoteQuizComponent } from './component/note-quiz/note-quiz.component';
 
 const routes: Routes = [
   {path:'formation',component:FormationComponent},
   {path:'ajouterFormation',component:AjouterFormationComponent},
   {path:'demandeInscription',component:DemandeFormationComponent},
   {path:'formation/:id',component:DetailFormationComponent},
+  {path:'noteQuiz/:idQuiz',component:NoteQuizComponent},
   {path:'modifierFormation/:id',component:ModifierFormationComponent},
   {path:'modifierFormateur/:id',component:ModifierFormateurComponent},
   {path:'modifierQuiz/:id',component:ModifierQuizComponent},
