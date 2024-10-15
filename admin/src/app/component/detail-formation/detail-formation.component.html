@@ -20,7 +20,7 @@
                         <li class="list-group-item"><strong>Attestation:</strong> <span
                                 *ngIf="formationData.attestation">Oui</span><span
                                 *ngIf="!formationData.attestation">Non</span></li>
-                                <button class="waves-light btn btn-sm btn-success"  [routerLink]="['/modifierFormation',idFormation]"> <i class="fa fa-pencil"></i></button>
+                                <button class="waves-light btn btn-sm btn-success"  [routerLink]="['/admin/modifierFormation',idFormation]"> <i class="fa fa-pencil"></i></button>
                                 &nbsp;
                             
                             <!-- Button trigger modal -->
@@ -52,7 +52,7 @@
                             <td>{{e.numTel}}</td>
                             <td>{{e.email}}</td>
                             <td>
-                                <button type="button" class="btn btn-danger">
+                                <button type="button" class="btn btn-danger" (click)="deleteEtudiant(e.idEtudiant,index)">
                                     <i class="fa fa-trash"> </i>
                                 </button>
                             </td>
@@ -66,10 +66,10 @@
                 <ul id="quiz-list">
                   <li *ngFor="let q of listeQuiz,index as i">Quiz {{i+1}}  
                     &nbsp;
-                    <button type="button" class="btn btn-primary" [routerLink]="['/noteQuiz',q.idQuiz]">Note </button>
+                    <button type="button" class="btn btn-primary" [routerLink]="['/admin/noteQuiz',q.idQuiz]">Note </button>
                     
                     &nbsp;
-                    <button class="waves-light btn btn-sm btn-success"  [routerLink]="['/modifierQuiz',q.idQuiz]"> <i class="fa fa-pencil"></i></button>
+                    <button class="waves-light btn btn-sm btn-success"  [routerLink]="['/admin/modifierQuiz',q.idQuiz]"> <i class="fa fa-pencil"></i></button>
                     &nbsp;
                     <button type="button" class="btn btn-danger" (click)="deleteQuiz(q.idQuiz,i)"><i class="fa fa-trash"> </i></button>
 
@@ -77,7 +77,7 @@
                 </li>
                 </ul>
                 
-                <button id="add-quiz-btn" class="btn btn-primary mt-3" [routerLink]="['/ajouterQuiz',idFormation]">Ajouter un quiz</button>
+                <button id="add-quiz-btn" class="btn btn-primary mt-3" [routerLink]="['/admin/ajouterQuiz',idFormation]">Ajouter un quiz</button>
               
             </div>
         </div>

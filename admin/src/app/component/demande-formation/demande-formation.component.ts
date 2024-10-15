@@ -13,7 +13,7 @@ export class DemandeFormationComponent implements OnInit{
   ngOnInit(): void {
     this.formationService.getDemande().subscribe(res=>{
       this.listeDemande=res.data;
-      console.log(this.listeDemande);
+      console.log("liste",this.listeDemande);
       
     })
   }

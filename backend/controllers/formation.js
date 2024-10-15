@@ -222,7 +222,7 @@ exports.deleteFormation = (req, res) => {
     })
 }
 exports.getDemandeFormation = (req, res) => {
-    let qr = `select i.idFormation,i.idEtudiant,etudiant.nom,etudiant.prenom,formation.titre from inscrireformation as i,formation,etudiant where formation.idFormation=i.idFormation and etudiant.idEtudiant=i.idEtudiant and accepter=0`;
+    let qr = `select i.idFormation,i.idEtudiant,etudiant.nom,etudiant.prenom,etudiant.numTel,etudiant.email,formation.titre from inscrireformation as i,formation,etudiant where formation.idFormation=i.idFormation and etudiant.idEtudiant=i.idEtudiant and accepter=0`;
     db.query(qr, (err, result) => {
         if (err) {
             console.log(err);

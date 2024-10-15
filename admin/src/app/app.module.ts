@@ -18,6 +18,8 @@ import { CreerQuizComponent } from './component/creer-quiz/creer-quiz.component'
 import { ModifierQuizComponent } from './component/modifier-quiz/modifier-quiz.component';
 import { DemandeFormationComponent } from './component/demande-formation/demande-formation.component';
 import { NoteQuizComponent } from './component/note-quiz/note-quiz.component';
+import { LoginComponent } from './component/login/login.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { NoteQuizComponent } from './component/note-quiz/note-quiz.component';
     CreerQuizComponent,
     ModifierQuizComponent,
     DemandeFormationComponent,
-    NoteQuizComponent
+    NoteQuizComponent,
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

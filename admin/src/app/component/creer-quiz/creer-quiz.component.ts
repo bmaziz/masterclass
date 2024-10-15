@@ -35,7 +35,7 @@ export class CreerQuizComponent implements OnInit {
     this.quizService.postQuiz(this.idFormation, this.quiz).subscribe(res => {
       
       alert("quiz ajouter");
-      this.route.navigate(["/formation"])
+      this.route.navigate(["/admin/formation"])
     })
   }
   onAjouterReponse() {
@@ -55,7 +55,7 @@ export class CreerQuizComponent implements OnInit {
   }
 
   formulaireInvalide(){
-    return this.questionForm.invalid
+    return this.questionForm.invalid ||!this.questionForm.value.reponses.find((reponse: any) => reponse.verite == true)||!this.questionForm.value.reponses.find((reponse: any) => reponse.verite == false)
   }
 }
 

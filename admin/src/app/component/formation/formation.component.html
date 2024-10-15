@@ -1,5 +1,5 @@
 <div class="container">
-    <a routerLink="/ajouterFormation"> <button class="btn btn-primary">Ajouter Formation </button></a>
+    <a routerLink="/admin/ajouterFormation"> <button class="btn btn-primary">Ajouter Formation </button></a>
     <div class="row">
         <div class="col-xs-12 ">
             <table class="table table-sm">
@@ -23,10 +23,10 @@
                         <td>{{f.prix}} DT</td>
                         <td>{{f.totalheure}}h/{{f.totalmois}}mois</td>
                         <td>
-                            <button class="waves-light btn btn-sm btn-info" [routerLink]="['/formation',f.idFormation]"> <i class="fas fa-info-circle "
+                            <button class="waves-light btn btn-sm btn-info" [routerLink]="['/admin/formation',f.idFormation]"> <i class="fas fa-info-circle "
                                     style="color: white;"></i></button>
                             &nbsp;
-                            <button class="waves-light btn btn-sm btn-success"  [routerLink]="['/modifierFormation',f.idFormation]"> <i class="fa fa-pencil"></i></button>
+                            <button class="waves-light btn btn-sm btn-success"  [routerLink]="['/admin/modifierFormation',f.idFormation]"> <i class="fa fa-pencil"></i></button>
                             &nbsp;
                             
                             <!-- Button trigger modal -->

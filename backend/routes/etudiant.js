@@ -7,6 +7,10 @@ router.get('/formation/:idEtudiant',EtudiantController.getFormationByIdEtudiant)
 router.get('/:idEtudiant',EtudiantController.getEtudiantById);
 router.post('/',EtudiantController.createEtudiant);
 router.put('/:idEtudiant',EtudiantController.updateEtudiant);
+router.put(
+    "/changerMotDePasse/:idEtudiant",
+    EtudiantController.changerMotDePasse
+  );
 router.delete('/:idEtudiant',EtudiantController.deleteEtudiant);
 
 module.exports= router;

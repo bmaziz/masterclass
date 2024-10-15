@@ -29,7 +29,7 @@ export class DetailFormationComponent implements OnInit {
   deleteFormation() {
     if (confirm("Vouler vous vrement supprimer cette formation")) {
       this.formationService.deleteFormation(this.idFormation).subscribe(res => {
-        this.route.navigate(['formation'])
+        this.route.navigate(['/admin/formation'])
       })
     }
   }
@@ -37,8 +37,18 @@ export class DetailFormationComponent implements OnInit {
     if (confirm("Vouler vous vrement supprimer cette quiz")) {
       this.quizService.deleteQuiz(idQuiz).subscribe(res => {
         this.listeQuiz.splice(index, 1)
+        
       })
     }
 
+  }
+  deleteEtudiant(idEtudiant:number,i:number){
+    if(confirm("Voulez vous vrément effacer cette etudiant")){
+      this.formationService.refuserDemande(this.idFormation,idEtudiant).subscribe(res=>{
+        alert("Etudiant supprimer de la formation");
+        this.formationData.participants.splice(i,1)
+      })
+    }
+    
   }
 }

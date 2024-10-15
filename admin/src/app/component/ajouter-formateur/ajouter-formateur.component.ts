@@ -25,7 +25,7 @@ export class AjouterFormateurComponent {
     
     this.formateurService.postFormateur(this.formateurForm.value).subscribe(res=>{
       alert("Formateur Ajouter")
-      this.router.navigate(['/formateur']); 
+      this.router.navigate(['/admin/formateur']); 
     })
   }
 

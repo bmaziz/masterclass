@@ -107,7 +107,7 @@ exports.postQuestion = (req, res) => {
 exports.postNote = (req, res) => {
     let idQuiz = req.params.idQuiz
     let idEtudiant = req.params.idEtudiant
-    let date = req.body.date;
+    let date = new Date().toISOString().slice(0, 19).replace("T", " ");
     let note = req.body.note
     let qr = `insert into noteQuiz(idQuiz,idEtudiant,date,note) values(${idQuiz},${idEtudiant},'${date}',${note})`
     db.query(qr, (err, result) => {
@@ -129,7 +129,7 @@ exports.postNote = (req, res) => {
 //get questions by quiz
 exports.getQuestionByQuiz = (req, res) => {
     let idQuiz = req.params.idQuiz;
-    let qrQuestions = `SELECT * FROM question WHERE idQuiz = ${idQuiz}`;
+    let qrQuestions = `SELECT question,idQuestion FROM question WHERE idQuiz = ${idQuiz}`;
 
     // Query for questions
     db.query(qrQuestions, (err, questions) => {
@@ -150,7 +150,7 @@ exports.getQuestionByQuiz = (req, res) => {
 
         // Fetch answers for each question
         questions.forEach(question => {
-            let qrAnswers = `SELECT * FROM reponse WHERE idQuestion = ${question.idQuestion}`;
+            let qrAnswers = `SELECT reponse,verite,idReponse FROM reponse WHERE idQuestion = ${question.idQuestion}`;
             db.query(qrAnswers, (err, answers) => {
                 if (err) {
                     console.error(err);
@@ -206,8 +206,10 @@ exports.getQuizByFormation = (req, res) => {
 }
 exports.putQuestion = (req, res) => {
     let idQuestion = req.params.idQuestion;
+    console.log(idQuestion);
     let question = req.body.question;
-    let reponses = req.body.reponses
+    console.log(question);
+    let reponses = req.body.reponses;
     let qr = `UPDATE question SET question="${question}" WHERE idQuestion=${idQuestion}`;
     db.query(qr, (err, result) => {
         if (err) {
@@ -218,8 +220,13 @@ exports.putQuestion = (req, res) => {
 
         }
         for (let index = 0; index < reponses.length; index++) {
+            
             let reponse = reponses[index].reponse;
             let verite = reponses[index].verite;
+            if (verite==true) {
+                verite=1
+            }
+            console.log(verite);
             let idReponse = reponses[index].idReponse
             let qr2 = `UPDATE reponse SET reponse="${reponse}",verite="${verite}" WHERE idReponse=${idReponse}`;
             db.query(qr2, (err2, result2) => {

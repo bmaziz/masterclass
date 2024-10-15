@@ -1,5 +1,5 @@
 <div class="container">
-    <a routerLink="/ajouterFormateur"> <button class="btn btn-primary">Ajouter Formateur </button></a>
+    <a routerLink="/admin/ajouterFormateur"> <button class="btn btn-primary">Ajouter Formateur </button></a>
     <div class="row">
         <div class="col-xs-12 ">
             <table class="table table-sm">
@@ -22,7 +22,7 @@
                         <td>{{f.email}}</td>
                         <td>
                             &nbsp;
-                            <button class="waves-light btn btn-sm btn-success"  [routerLink]="['/modifierFormateur',f.idFormateur]"> <i class="fa fa-pencil"></i></button>
+                            <button class="waves-light btn btn-sm btn-success"  [routerLink]="['/admin/modifierFormateur',f.idFormateur]"> <i class="fa fa-pencil"></i></button>
                             &nbsp;
                             
                             <!-- Button trigger modal -->

@@ -1,6 +1,6 @@
 const db = require('../connection/connection');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+
 
 //get all data
 exports.getAllEtudiant = (req, res) => {
@@ -52,7 +52,6 @@ exports.connexion = (req, res) => {
 
         // Récupérer le mot de passe hashé de l'utilisateur trouvé
         const hashedPassword = result[0].password;
-        console.log(hashedPassword,"",password);
 
         // Vérifier si le mot de passe fourni correspond au mot de passe hashé dans la base de données
         bcrypt.compare(password, hashedPassword, (bcryptErr, bcryptResult) => {
@@ -106,7 +105,7 @@ exports.getFormationByIdEtudiant = (req, res) => {
             });
         } else {
             // Si aucune formation n'est trouvée, renvoyer une réponse avec le code de statut 404 (Non trouvé)
-            return res.status(404).send({
+            return res.status(200).send({
                 message: "Aucune formation trouvée pour cet étudiant."
             });
         }
@@ -196,7 +195,11 @@ exports.createEtudiant = (req, res) => {
 exports.updateEtudiant = (req, res) => {
     let idEtudiant = req.params.idEtudiant;
     let nom = req.body.nom;
-    let qr = `update etudiant set nom="${nom}" where idEtudiant=${idEtudiant}`
+    let email=req.body.email
+    let prenom=req.body.prenom
+    let numTel=req.body.numTel
+    let image=req.body.image
+    let qr = `update etudiant set nom="${nom}",prenom="${prenom}",email="${email}",numTel="${numTel}",image="${image}" where idEtudiant=${idEtudiant}`
     db.query(qr, (err, result) => {
         if (err) { console.log(err); }
         res.send({
@@ -223,4 +226,86 @@ exports.deleteEtudiant = (req, res) => {
         });
     });
 };
-
+exports.changerMotDePasse = (req, res) => {
+    let idEtudiant = req.params.idEtudiant;
+    let ancienMotDePasse = req.body.ancienMotDePasse;
+    let nouveauMotDePasse = req.body.nouveauMotDePasse;
+  
+    console.log(ancienMotDePasse);
+  
+    // Rechercher l'étudiant dans la base de données par son identifiant
+    let qr = `SELECT * FROM etudiant WHERE idEtudiant = ?`;
+    db.query(qr, [idEtudiant], (err, result) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send({
+          message:
+            "Une erreur s'est produite lors de la recherche de l'étudiant.",
+        });
+      }
+  
+      // Vérifier si l'étudiant existe
+      if (result.length === 0) {
+        return res.status(404).send({
+          message: "Aucun étudiant avec cet identifiant n'a été trouvé.",
+        });
+      }
+  
+      // Récupérer le mot de passe hashé de l'étudiant trouvé
+      const hashedPassword = result[0].password;
+  
+      // Vérifier si l'ancien mot de passe fourni correspond au mot de passe hashé dans la base de données
+      bcrypt.compare(
+        ancienMotDePasse,
+        hashedPassword,
+        (bcryptErr, bcryptResult) => {
+          if (bcryptErr) {
+            console.error(bcryptErr);
+            return res.status(500).send({
+              message:
+                "Une erreur s'est produite lors de la vérification du mot de passe.",
+            });
+          }
+  
+          // Si les mots de passe correspondent
+          if (bcryptResult) {
+            // Hasher le nouveau mot de passe
+            bcrypt.hash(nouveauMotDePasse, 10, (hashErr, hash) => {
+              if (hashErr) {
+                console.error(hashErr);
+                return res.status(500).send({
+                  message:
+                    "Une erreur s'est produite lors du cryptage du nouveau mot de passe.",
+                });
+              }
+  
+              // Mettre à jour le mot de passe dans la base de données
+              let updateQuery = `UPDATE etudiant SET password = ? WHERE idEtudiant = ?`;
+              db.query(
+                updateQuery,
+                [hash, idEtudiant],
+                (updateErr, updateResult) => {
+                  if (updateErr) {
+                    console.error(updateErr);
+                    return res.status(500).send({
+                      message:
+                        "Une erreur s'est produite lors de la mise à jour du mot de passe.",
+                    });
+                  }
+  
+                  return res.status(200).send({
+                    message: "Mot de passe mis à jour avec succès.",
+                  });
+                }
+              );
+            });
+          } else {
+            // Si les mots de passe ne correspondent pas
+            return res.status(401).send({
+              message: "Ancien mot de passe incorrect.",
+            });
+          }
+        }
+      );
+    });
+  };

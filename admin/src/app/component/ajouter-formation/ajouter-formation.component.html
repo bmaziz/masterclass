@@ -1,18 +1,18 @@
 <div class="container">
-  <div class="row">
-    <div class="col-9">
-      <h2 class="text-center">Ajouter Formation</h2>
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h2 class="text-center mb-4">Ajouter Formation</h2>
       <form [formGroup]="formationForm" (submit)="ajouterFormation()">
-        <div class="mb-1 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Titre Formation</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" formControlName="titre">
+        <div class="mb-3 row">
+          <label for="titre" class="col-sm-3 col-form-label">Titre Formation</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="titre" formControlName="titre">
           </div>
         </div>
-        <div class="mb-1 row">
-          <label for="inputPassword" class="col-sm-2 col-form-label">Formateur</label>
-          <div class="col-sm-8">
-            <select formControlName="idFormateur" class="form-control">
+        <div class="mb-3 row">
+          <label for="idFormateur" class="col-sm-3 col-form-label">Formateur</label>
+          <div class="col-sm-9">
+            <select id="idFormateur" formControlName="idFormateur" class="form-control">
               <option value="">Choisir Formateur</option>
               <option [value]="i.idFormateur" *ngFor="let i of formateurs">
                 {{i.nom}} {{i.prenom}}
@@ -20,85 +20,102 @@
             </select>
           </div>
         </div>
-        <div class="mb-1 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Url image</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" formControlName="image">
+        <div class="mb-3 row">
+          <label for="image" class="col-sm-3 col-form-label">Url image</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="image" formControlName="image">
           </div>
         </div>
-        <div class="mb-1 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">icone</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" formControlName="icone">
-          </div>
-        </div>
-
-        <div class="mb-1 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Prix</label>
-          <div class="col-sm-8">
-            <input type="number" class="form-control" formControlName="prix">
-          </div>
-        </div>
-        <div class="mb-1 row">
-          <label for="inputPassword" class="col-sm-2 col-form-label">Duree par Heure</label>
-          <div class="col-sm-8">
-            <input type="number" class="form-control" formControlName="totalheure">
+        <div class="mb-3 row">
+          <label for="icone" class="col-sm-3 col-form-label">Icône</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="icone" formControlName="icone">
           </div>
         </div>
 
-        <div class="mb-1 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Duree par mois</label>
-          <div class="col-sm-8">
-            <input type="number" class="form-control" formControlName="totalmois">
+        <div class="mb-3 row">
+          <label for="prix" class="col-sm-3 col-form-label">Prix</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" id="prix" formControlName="prix">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="totalheure" class="col-sm-3 col-form-label">Durée par Heure</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" id="totalheure" formControlName="totalheure">
           </div>
         </div>
 
-        <div class="mb-1 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Description</label>
-          <div class="col-sm-8">
-            <textarea type="text" class="form-control" style="height: 100px;" formControlName="description"></textarea>
+        <div class="mb-3 row">
+          <label for="totalmois" class="col-sm-3 col-form-label">Durée par mois</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" id="totalmois" formControlName="totalmois">
           </div>
         </div>
-        <div class="mb-1 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Apropos</label>
-          <div class="col-sm-8">
-            <textarea type="text" class="form-control" style="height: 100px;" formControlName="apropos"></textarea>
+
+        <div class="mb-3 row">
+          <label for="description" class="col-sm-3 col-form-label">Description</label>
+          <div class="col-sm-9">
+            <textarea type="text" class="form-control" id="description" style="height: 100px;"
+              formControlName="description"></textarea>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="apropos" class="col-sm-3 col-form-label">À propos</label>
+          <div class="col-sm-9">
+            <textarea type="text" class="form-control" id="apropos" style="height: 100px;"
+              formControlName="apropos"></textarea>
           </div>
         </div>
 
 
-        <div class="mb-1 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Date Debut</label>
-          <div class="col-sm-8">
-            <input type="date" class="form-control" formControlName="dateDebut">
+        <div class="mb-3 row">
+          <label for="dateDebut" class="col-sm-3 col-form-label">Date Début</label>
+          <div class="col-sm-9">
+            <input type="date" class="form-control" id="dateDebut" formControlName="dateDebut">
           </div>
         </div>
-        <div>
-          Liste des programme
-          <div formArrayName="programme">
-            <div *ngFor="let d of programme.controls;  index as i">
-              <div [formGroupName]="i">
-                Titre du programme: <input type="text" formControlName="titre">
-                <input type="button" (click)="onSupprimerProgramme(i)" class="btn btn-light" value="-" *ngIf="programme.length!=1"><br>
-                Contenus:
-                <div formArrayName="contenus">
-                  <div *ngFor="let c of getContenu(i).controls;  index as j">
-                    <div [formGroupName]="j">
-                      Contenu: <input type="text" formControlName="contenu">
-                      <input type="button" (click)="onSupprimerContenu(i,j)" class="btn btn-light" value="-" *ngIf="getContenu(i).length!=1">
 
-                    </div>
-                  </div>
-                  <input type="button" (click)="onAjouterContenu(i)" class="btn btn-dark" value="Ajouter contenu">
+        <!-- Liste des programmes -->
+        <div formArrayName="programme" class="mb-3">
+          <div class="col-sm-12">
+            <h3>Liste des programmes</h3>
+          </div>
+          <ul>
+            <li *ngFor="let d of programme.controls; index as i" class="mb-3 row">
+              <div [formGroupName]="i" class="col-12">
+                <label class="mb-2">Titre du programme</label>
+                <input type="text" formControlName="titre" class="form-control">
+                <button type="button" (click)="onSupprimerProgramme(i)" class="btn btn-light mt-2"
+                  *ngIf="programme.length != 1">-</button><br>
+                <div formArrayName="contenus" class="mt-3">
+                  <h2>Contenus</h2>
+                  <ul>
+                    <li *ngFor="let c of getContenu(i).controls; index as j">
+                      <div [formGroupName]="j" class="mb-2">
+                        
+                        <input type="text" formControlName="contenu" class="form-control">
+                        <button type="button" (click)="onSupprimerContenu(i, j)" class="btn btn-light mt-2"
+                          *ngIf="getContenu(i).length != 1">-</button>
+                      </div>
+                    </li>
+                  </ul>
+                  <button type="button" (click)="onAjouterContenu(i)" class="btn btn-dark mt-2">Ajouter contenu</button>
                 </div>
               </div>
-            </div>
-            <input type="button" (click)="onAjouterProgramme()" class="btn btn-dark" value="Ajouter programme">
-          </div>
+            </li>
+          </ul>
+          <button type="button" (click)="onAjouterProgramme()" class="btn btn-dark">Ajouter programme</button>
         </div>
-        <div>
-          <button class="btn btn-success text-center" [disabled]="formationForm.invalid" type="submit">Ajouter
+
+        <!-- Bouton d'ajout de formation -->
+        <div class="mb-3">
+          <button class="btn btn-success btn-block" [disabled]="formationForm.invalid" type="submit"><i class="fa-solid fa-square-plus"></i> Ajouter
             Formation</button>
+            <button type="button" class="btn btn-secondary" (click)="formationForm.reset()">
+              <i class="fa-solid fa-trash"></i>
+              Effacer
+          </button>
         </div>
       </form>
     </div>

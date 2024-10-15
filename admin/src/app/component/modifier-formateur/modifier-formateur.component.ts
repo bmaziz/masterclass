@@ -41,7 +41,7 @@ export class ModifierFormateurComponent implements OnInit {
     
     this.formateurService.updateFormateur(this.id,this.formateurForm.value).subscribe(res=>{
       alert("Formateur modifier");
-      this.router.navigate(['/formateur'])
+      this.router.navigate(['/admin/formateur'])
     })
   }
 }

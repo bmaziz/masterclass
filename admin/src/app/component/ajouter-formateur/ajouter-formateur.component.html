@@ -31,8 +31,12 @@
                     </div>
                   </div>
                 <div>
-                    <button class="btn btn-success text-center" [disabled]="formateurForm.invalid" type="submit">Ajouter</button>
-                </div>
+                    <button class="btn btn-success text-center" [disabled]="formateurForm.invalid" type="submit"><i class="fa-solid fa-square-plus"> </i>Ajouter Formateur</button>
+                    <button type="button" class="btn btn-secondary" (click)="formateurForm.reset()">
+                      <i class="fa-solid fa-trash"></i>
+                      Effacer
+                  </button>
+                  </div>
             </form>
         </div>
     </div>

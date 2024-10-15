@@ -1,10 +1,12 @@
 <div class="container mt-5">
-    <h2>Liste des demande d'inscription</h2>
+    <h2>Liste des demandes d'inscription</h2>
     <table class="table">
         <thead>
             <tr>
                 <th scope="col">Formation</th>
                 <th scope="col">Étudiant</th>
+                <th scope="col">Numéro</th>
+                <th scope="col">Email</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -12,6 +14,8 @@
             <tr *ngFor="let d of listeDemande,index as i">
                 <td>{{d.titre}}</td>
                 <td>{{d.nom}} {{d.prenom}}</td>
+                <td>{{d.numTel}}</td>
+                <td>{{d.email}}</td>
                 <td>
                     <button class="btn btn-success" (click)="accepterDemande(d.idFormation,d.idEtudiant,i)">Accepter</button>
                     <button class="btn btn-danger" (click)="refuserDemande(d.idFormation,d.idEtudiant,i)">Refuser</button>

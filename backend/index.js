@@ -7,8 +7,10 @@ const formateurRoute= require('./routes/formateur');
 const etudiantRoute= require('./routes/etudiant.js');
 const overviewRoute=require('./routes/overview');
 const quizzRoute=require('./routes/quizz')
+const adminRoute=require('./routes/admin.js')
  app.use(cors());
 app.use(bodyparser.json());
+app.use('/admin',adminRoute)
 app.use('/quiz',quizzRoute);
 app.use('/overview',overviewRoute);
 app.use('/formateur',formateurRoute);

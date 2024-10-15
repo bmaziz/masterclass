@@ -51,8 +51,7 @@ export class ModifierQuizComponent {
   }
 
   modifierQuestion() {
-
-    this.quizService.putQuestion(this.quiz[this.j].idQuestion, this.questionForm.value).subscribe(res => {
+    this.quizService.putQuestion(this.quiz[this.j].idQuestion, this.questionForm.value).subscribe(res => {      
       alert("Question modifier avec succe")
       this.quiz.splice(this.j, 1, this.questionForm.value)
 
@@ -69,6 +68,7 @@ export class ModifierQuizComponent {
 
     this.j = this.j - 1;
     this.remplir(this.j)
+    this.ajouter=false
   }
   formulaireInvalide() {
     return this.questionForm.invalid ||!this.questionForm.value.reponses.find((reponse: any) => reponse.verite == true)||!this.questionForm.value.reponses.find((reponse: any) => reponse.verite == false)

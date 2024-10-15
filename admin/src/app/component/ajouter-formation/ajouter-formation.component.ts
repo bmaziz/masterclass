@@ -33,12 +33,13 @@ export class AjouterFormationComponent implements OnInit {
     })
     this.onAjouterProgramme()
   }
+
   ajouterFormation() {
     console.log(this.formationForm.value);
 
     this.formationService.postFormation(this.formationForm.value).subscribe(res => {
       alert("Formation Ajouter")
-      this.router.navigate(['/formation']);
+      this.router.navigate(['/admin/formation']);
     })
   }
   public get programme() {
