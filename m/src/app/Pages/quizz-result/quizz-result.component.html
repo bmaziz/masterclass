@@ -1,0 +1,54 @@
+<br>
+<section class="results-section tw-container tw-mx-auto">
+  <h1>RESULTATS</h1>
+
+  <h2>
+    Score = <strong>{{ this.quiz.score }}/100</strong>
+  </h2>
+  <div *ngFor="let question of quiz.questions; let i = index">
+    <div
+      class="tw-flex tw-container tw-gap-2 tw-mx-auto tw-justify-center tw-w-fit tw-items-center"
+    >
+      <h2>Question {{ i + 1 }}: {{ question.question }}</h2>
+      <span class="tw-mb-1">|</span>
+      <h5
+        [ngClass]="{
+          'tw-text-green-500':
+            question.score != undefined && question.score >= 0.7,
+          'tw-text-yellow-500':
+            question.score != undefined &&
+            question.score > 0.1 &&
+            question.score < 0.7,
+          'tw-text-red-700':
+            question.score == undefined || question.score <= 0.1
+        }"
+      >
+        {{ question.score }} pts
+      </h5>
+    </div>
+
+    <ul class="answer-list">
+      <li
+        *ngFor="let reponse of question.reponses"
+        class="answer-item"
+        [ngClass]="{
+          'correct-answer': isAnswerCorrect(reponse),
+          'incorrect-answer': isAnswerIncorrect(reponse),
+          'missed-answer': isAnswerMissed(reponse)
+        }"
+      >
+        <span class="answer-text">{{ reponse.reponse }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div
+    class="tw-w-full tw-flex tw-container tw-justify-center tw-items-center tw-mx-auto"
+  >
+    <a
+      class="btn btn-info tw-mx-auto tw-w-fit tw-my-4 tw-mb-12"
+      [routerLink]="['/mes-formations']"
+      >Retourner à mes formations</a
+    >
+  </div>
+</section>

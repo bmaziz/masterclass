@@ -1,0 +1,94 @@
+body {
+    color: white;
+  }
+
+  h1{
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    line-height: 1.3em;
+  }
+
+
+.cs-bg {
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-image: radial-gradient(at top left, #1DCFFC 30%, var( --e-global-color-secondary ) 100%); 
+    color: transparent;
+}
+
+
+  #animated-text{
+    font-size: 3rem;
+    line-height: 2.1em;
+  }
+  @media screen and (max-width: 720px) {
+    #animated-text {
+      font-size: 2rem; /* Ajustez la taille de la police pour les écrans plus petits */
+      line-height: 1.6em; /* Ajustez la hauteur de ligne pour les écrans plus petits */
+    }
+}
+  
+  .content-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  .floating-image {
+    animation: floatAnimation 3s infinite alternate;
+  }
+  
+  @keyframes floatAnimation {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+
+  
+
+  .decouvrir-button{
+    cursor: pointer;
+    margin: 0px 20px 0px 0px;
+    border-radius: 16px 16px 16px 16px;
+    box-shadow: 7px 7px 15px 0px #060709;
+    height: 50px;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color:white;
+    font-weight: bold;
+    transition-duration: .2s;
+    background-color: transparent;
+    background-image: radial-gradient(at top right, var(--e-global-color-accent) 0%, var(--e-global-color-secondary) 100%);
+    border-radius: 16px 16px 16px 16px;
+    padding: 20px 30px 20px 30px;
+  }
+
+  .decouvrir-button:hover{
+    transform: scale(.9);
+  }
+
+
+
+  swiper-container {
+    width: 600px;
+    background-color:transparent;
+  }
+
+  swiper-slide {
+    text-align: center;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+

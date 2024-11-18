@@ -1,0 +1,14 @@
+<div class="card-outline tw-cursor-pointer">
+  <div class="card-container" (click)="redirectToDetails()">
+    <img [srcset]="image" alt="Image de formation" class="tw-mb-2" />
+    <span class="tw-text-yellow-400 tw-text-sm">★★★★★</span>
+    <div class="card-details tw-mt-2 tw-mb-2">
+      <h2 class="tw-font-bold">{{ titre }}</h2>
+      <p class="tw-text-gray-500 tw-text-sm">{{ description }}</p>
+    </div>
+    <a
+      class="tw-cursor-pointer tw-hover:tw-translate-x-2 tw-duration-75 tw-text-sm tw-font-semibold"
+      >Plus de détails <i aria-hidden="true" class="fas fa-arrow-right"></i
+    ></a>
+  </div>
+</div>

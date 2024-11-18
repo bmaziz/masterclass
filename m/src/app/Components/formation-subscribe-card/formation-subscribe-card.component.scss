@@ -1,0 +1,88 @@
+.card-outline {
+    background-color: transparent;
+    background-image: radial-gradient(at top right, var(--e-global-color-accent) 0%, var(--e-global-color-secondary) 100%);
+    padding: 1px 1px 1px 1px;
+    border-radius: 26px 26px 26px 26px;
+    overflow: hidden;
+    transition-duration: 0.2s;
+    box-shadow: 10px 10px 25px 0px #0E1015;
+  }
+  
+  .card-outline:hover{
+    // transform: rotate3d(5, 5, 10, 5deg); /* Ajustez les valeurs selon votre besoin */
+    background-color: transparent;
+    background-image: radial-gradient(at top right, #313648 0%, #222633 100%);
+    background-image: radial-gradient(at top right, var(--e-global-color-accent) 0%, var(--e-global-color-secondary) 100%);
+  }
+  .card-container {
+    color: white;
+    background-color: #1f232f;
+    border-radius: 26px 26px 26px 26px;
+    position: relative;
+    padding: 25px 25px 30px 25px;
+  }
+  
+  
+  img {
+    width: 100%;
+    border-radius: 16px 16px 16px 16px;
+    vertical-align: middle;
+    display: inline-block;
+    border: none;
+    aspect-ratio: auto 800 / 800;
+  }
+  
+
+  .hover-out {
+    background-color: transparent;
+    background-image: radial-gradient(at top right, #313648 0%, #222633 100%);
+    transform: none;
+  }
+  
+.login-button-container{
+  cursor: pointer;
+  margin: 0px 20px 0px 0px;
+  border-radius: 16px 16px 16px 16px;
+  box-shadow: 7px 7px 15px 0px #060709;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color:white;
+  font-weight: bold;
+  transition-duration: .2s;
+  background-color: transparent;
+  background-image: radial-gradient(at top right, var(--e-global-color-accent) 0%, var(--e-global-color-secondary) 100%);
+  border-radius: 16px 16px 16px 16px;
+  padding: 20px 30px 20px 30px;
+  position: relative;
+  width: 100%;
+}
+
+
+
+.login-button-container:hover{
+  transform: scale(0.9);
+  background-image: radial-gradient(at bottom left, var(--e-global-color-accent) 0%, var(--e-global-color-secondary) 100%);
+}
+
+
+.li-formation-detail{
+  font-weight: 100;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.li-formation-detail i{
+  width: 20px;
+  }
+
+.login-button-container i  {
+  position: absolute;
+  right: 30px;
+}

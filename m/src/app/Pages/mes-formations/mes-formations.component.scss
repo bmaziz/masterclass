@@ -1,0 +1,35 @@
+@mixin center(){
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+      left:50%;
+      top:50%;
+  }
+  
+  
+  @import url(https://fonts.googleapis.com/css?family=Raleway:400,,800,900);
+
+
+  .title-container{
+    margin-left: auto;
+    margin-right: auto;
+    color:rgb(207, 207, 207);
+  }
+  .title{
+    font-weight: 800;
+    color: transparent;
+    font-size:120px;
+    background: url("https://cdna.artstation.com/p/assets/images/images/054/374/332/original/kesavan-shanmugasundaram-tdg-blackhole-gif-9-28-2022-1.gif?1664386602") repeat;
+    background-position: 40% 50%;
+    -webkit-background-clip: text;
+    position:relative;
+    text-align:center;
+    line-height:90px;
+    letter-spacing: -8px;
+  }
+  .subtitle{
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    padding-top:10px;
+  }

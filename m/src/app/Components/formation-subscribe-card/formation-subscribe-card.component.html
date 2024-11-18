@@ -1,0 +1,57 @@
+<div class="card-outline md:mx-0">
+  <div class="card-container tw-max-w-none md:tw-max-w-[400px]">
+    <img [srcset]="formation.image" alt="Image de formation" class="tw-mb-2" />
+    <div class="card-details tw-mt-2 tw-mb-2">
+      <ul class="tw-list-none">
+        <li class="li-formation-detail">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+          Durée : {{ this.formation.totalmois }} mois -
+          {{ this.formation.totalheure }} H
+        </li>
+        <li class="li-formation-detail">
+          <i class="fas fa-clock" aria-hidden="true"></i>
+          {{ this.formation.totalheure / (this.formation.totalmois * 4) }}
+          Heures / Semaine
+        </li>
+        <li class="li-formation-detail">
+          <i class="fa-solid fa-money-bill"></i>
+          Prix : {{this.formation.prix}} DT
+        </li>
+        <li class="li-formation-detail">
+          <i class="fas fa-award" aria-hidden="true"></i>
+          Certificat : Oui
+        </li>
+        <li class="li-formation-detail">
+          <i class="fas fa-file-invoice" aria-hidden="true"></i>
+          Attestation de Stage : Oui
+        </li>
+        <li class="li-formation-detail">
+          <i class="fas fa-laptop-code" aria-hidden="true"></i>
+          Disponible en présentiel ou en ligne
+        </li>
+      </ul>
+    </div>
+
+    <div
+      class="tw-container tw-flex-col tw-flex tw-justify-center tw-items-center gap-2"
+    >
+      <h3 class="tw-text-yellow-400 tw-text-xl">
+        {{ "nouvelle session à partir du" | uppercase }}
+      </h3>
+      <h2>
+        {{ formatDateToFrenchString(this.formation.dateDebut) | titlecase }}
+      </h2>
+
+      <a class="login-button-container" (click)="subscribe()" *ngIf="true">
+        {{
+          this.currentUserSubscribed == 0
+            ? "S'inscrire"
+            : this.currentUserSubscribed == 1
+            ? "En attente"
+            : "Inscrit"
+        }}
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,144 @@
+<div class="modal-header tw-bg-black tw-text-white">
+  <h5 class="modal-title" id="exampleModalLabel">Vos paramètres de compte</h5>
+  <button type="button" aria-label="Close" (click)="modalRef.close()">
+    <i class="fas fa-xmark"></i>
+  </button>
+</div>
+<div class="modal-body tw-bg-red-100">
+  <div class="settings-page">
+    <div class="settings-container">
+      <h1 class="page-title">Compte</h1>
+      <div class="settings-section">
+        <h2 class="settings-title">Informations Générales</h2>
+
+        <!-- Modification du Prénom -->
+        <div class="non-active-form">
+          <label class="tw-text-gray-500">Prénom</label>
+
+          <p *ngIf="!isModifying('prenom')">{{ currentUser.prenom }}</p>
+          <input name="prenom" placeholder="Votre prénom" class="form-control" *ngIf="isModifying('prenom')" type="text"
+            [(ngModel)]="currentUser.prenom" value="currentUser.prenom" />
+
+          <i *ngIf="!isModifying('prenom')" (click)="setModifying('prenom')" class="fas fa-pen"></i>
+          <button (click)="updateUser()" *ngIf="isModifying('prenom')" class="btn btn-success">
+            <i class="fas fa-floppy-disk" style="margin-right: 0px !important"></i>
+          </button>
+        </div>
+        <h5 *ngIf="error && isModifying('prenom')" class="error-msg">
+          {{ error }} 😥
+        </h5>
+
+        <!-- Modification du nom -->
+        <div class="non-active-form">
+          <label class="tw-text-gray-500">Nom</label>
+
+          <p *ngIf="!isModifying('nom')">{{ currentUser.nom }}</p>
+          <input name="nom" placeholder="Votre nom" class="form-control" *ngIf="isModifying('nom')" type="text"
+            [(ngModel)]="currentUser.nom" />
+          <i *ngIf="!isModifying('nom')" (click)="setModifying('nom')" class="fas fa-pen"></i>
+          <button (click)="updateUser()" *ngIf="isModifying('nom')" class="btn btn-success">
+            <i class="fas fa-floppy-disk" style="margin-right: 0px !important"></i>
+          </button>
+        </div>
+        <h5 *ngIf="error && isModifying('nom')" class="error-msg">
+          {{ error }} 😥
+        </h5>
+
+        <!-- Modification du numéro de téléphone -->
+        <div class="non-active-form">
+          <label class="tw-text-gray-500">Numéro</label>
+
+          <p *ngIf="!isModifying('numTel')">{{ currentUser.numTel }}</p>
+          <input name="numTel" placeholder="Votre numéro de téléphone" class="form-control"
+            *ngIf="isModifying('numTel')" type="text" [(ngModel)]="currentUser.numTel" />
+          <i *ngIf="!isModifying('numTel')" (click)="setModifying('numTel')" class="fas fa-pen"></i>
+          <button (click)="updateUser()" *ngIf="isModifying('numTel')" class="btn btn-success">
+            <i class="fas fa-floppy-disk" style="margin-right: 0px !important"></i>
+          </button>
+        </div>
+        <h5 *ngIf="error && isModifying('numTel')" class="error-msg">
+          {{ error }} 😥
+        </h5>
+
+        <!-- Modification de l'e-mail -->
+        <div class="non-active-form">
+          <label class="tw-text-gray-500">Email</label>
+
+          <p *ngIf="!isModifying('email')">{{ currentUser.email }}</p>
+          <input name="email" placeholder="Votre adresse e-mail" class="form-control" *ngIf="isModifying('email')"
+            type="text" [(ngModel)]="currentUser.email" />
+          <i *ngIf="!isModifying('email')" (click)="setModifying('email')" class="fas fa-pen"></i>
+          <button (click)="updateEmail()" *ngIf="isModifying('email')" class="btn btn-success">
+            <i class="fas fa-floppy-disk" style="margin-right: 0px !important"></i>
+          </button>
+        </div>
+
+        <h5 *ngIf="error && isModifying('email')" class="error-msg">
+          {{ error }} 😥
+        </h5>
+      </div>
+      <div class="settings-section">
+        <h2 class="settings-title">Mon Profil</h2>
+        <form class="form my-form">
+          <div class="img-upload-container">
+            <label class="img-upload btn btn-bwm" style="background-image: url('/profile-placeholder.jpg')">
+              <input type="file" accept=".jpg, .png, .jpeg, .gif" value="" />
+            </label>
+            <h4>Changez votre photo de profil</h4>
+
+            <div class="img-preview-container">
+              <div class="img-preview" [ngStyle]="{
+                  'background-image': 'url(' + currentUser.image + ')'
+                }"></div>
+            </div>
+          </div>
+          <input name="Photodeprofil" placeholder="Votre Photo de profil" class="form-control" type="text"
+            [(ngModel)]="currentUser.image" />
+          <div class="form-submit">
+            <button (click)="updateProfilPic()" class="btn button full" type="submit"
+              [disabled]="currentUser.image.length < 10">
+              Sauvegarder photo
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="settings-section">
+        <h2 class="settings-title">Mot de passe</h2>
+        <form class="form my-form">
+          <div class="form-group">
+            <div class="input-group">
+              <input name="currentPassword" placeholder="Ancien Mot de passe" type="password"
+                class="form-control tw-mb-2" [(ngModel)]="oldPassword" />
+              <span class="focus-input"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <input name="password" placeholder="Nouveau mot de passe" type="password" class="form-control tw-mb-2"
+                [(ngModel)]="newPassword" />
+              <span class="focus-input"></span>
+            </div>
+          </div>
+
+          <h5 *ngIf="passwordError" class="error-msg">
+            {{ passwordError }} 😥
+          </h5>
+          <div class="form-submit right">
+            <button class="btn button full" type="submit" (click)="updatePassword()" [disabled]="!isPasswordValid()">
+              Valider changement
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="settings-section">
+        <h2 class="settings-title">Paramètres supplémentaires</h2>
+        <form class="form my-form">
+          <button class="btn btn-danger" (click)="confirmDelete()">
+            Supprimer mon compte
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

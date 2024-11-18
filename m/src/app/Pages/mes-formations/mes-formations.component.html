@@ -1,0 +1,43 @@
+<section
+  class="tw-px-8 tw-min-h-lvh tw-container tw-flex tw-flex-col tw-justify-start tw-items-center -w-text-white tw-mx-auto"
+  style="margin-top: 100px"
+>
+  <header class="tw-mt-20">
+    <div class="title-container">
+      <div class="title">MES FORMATIONS</div>
+      <div class="subtitle">
+        support + suivi + certifications + quizz = Masterclass
+      </div>
+    </div>
+  </header>
+
+  <!-- Affichage du spinner de chargement lorsque les données sont en cours de chargement -->
+  <div
+    *ngIf="isLoading"
+    class="tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-3"
+  >
+    <div class="tw-spinner-border tw-text-[#AC01FF]" role="status">
+      <span class="tw-visually-hidden">Loading...</span>
+    </div>
+    <h2 class="tw-animate-bounce">Chargement en cours....</h2>
+  </div>
+
+  <!-- Affichage du message d'erreur en cas d'erreur -->
+  <div *ngIf="error" class="tw-text-red-500">
+    {{ error }}
+  </div>
+
+  <!-- Affichage des données de la formation lorsque disponibles -->
+  <div *ngIf="!isLoading && !error">
+    <div
+      class="tw-container tw-flex tw-flex-col md:tw-flex-row gap-4 tw-my-4 tw-mt-16"
+    >
+      <div class="w-full">
+        <app-my-formation-card
+          *ngFor="let formation of formations"
+          [formation]="formation"
+        ></app-my-formation-card>
+      </div>
+    </div>
+  </div>
+</section>

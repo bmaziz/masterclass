@@ -1,0 +1,21 @@
+<div *ngIf="formation != null" class="formation-card-outline">
+  <div (click)="redirectToDetails()" class="formation-card-container">
+    <img
+      class="icon-formation tw-w-24 tw-h-24"
+      decoding="async"
+      [src]="formation.icone"
+      alt="Dev Mobile - Flutter"
+    />
+    <div class="about-formation tw-flex tw-flex-col tw-gap-4 tw-flex-wrap">
+      <h2 class="titre tw-font-bold tw-text-2xl" style="white-space: no-wrap">
+        {{ formation.titre }}
+      </h2>
+      <p class="tw-text-gray-300">
+        {{ formation.description }}
+      </p>
+      <a class="tw-cursor-pointer tw-hover:tw-translate-x-2 tw-duration-75"
+        >Découvrir <i aria-hidden="true" class="fas fa-arrow-right"></i
+      ></a>
+    </div>
+  </div>
+</div>

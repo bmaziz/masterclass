@@ -1,0 +1,42 @@
+.card-outline {
+    background-color: transparent;
+    background-image: radial-gradient(at top right, #313648 0%, #222633 100%);
+    padding: 1px 1px 1px 1px;
+    border-radius: 26px 26px 26px 26px;
+    overflow: hidden;
+    transition-duration: 0.2s;
+  }
+  
+  .card-outline:hover{
+    // transform: rotate3d(5, 5, 10, 5deg); /* Ajustez les valeurs selon votre besoin */
+    transform: scale(1.01);
+    background-color: transparent;
+    background-image: radial-gradient(at top right, var(--e-global-color-accent) 0%, var(--e-global-color-secondary) 100%);
+    box-shadow: 10px 10px 25px 0px #0E1015;
+  }
+  .card-container {
+    color: white;
+    background-color: #1f232f;
+    border-radius: 26px 26px 26px 26px;
+    position: relative;
+    padding: 25px 25px 30px 25px;
+  }
+  
+  .card-details {}
+  
+  img {
+    width: 100%;
+    border-radius: 16px 16px 16px 16px;
+    vertical-align: middle;
+    display: inline-block;
+    border: none;
+    aspect-ratio: auto 800 / 800;
+  }
+  
+
+  .hover-out {
+    background-color: transparent;
+    background-image: radial-gradient(at top right, #313648 0%, #222633 100%);
+    transform: none;
+  }
+  

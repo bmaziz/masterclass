@@ -1,0 +1,14 @@
+{
+  "titre": "Test de niveau",
+  "contenu": [
+    {
+      "question": "Que veut dire HTML ?",
+      "reponses": [
+        { "reponse": " Hyper Text", "verite": 0 },
+        { "reponse": " Huppet", "verite": 0 },
+        { "reponse": " Happy Text", "verite": 1 },
+        { "reponse": "Aucune reponse", "verite": 0 }
+      ]
+    }
+  ]
+}

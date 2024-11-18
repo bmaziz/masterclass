@@ -1,0 +1,80 @@
+nav {
+    z-index: 800;    
+    background-image: linear-gradient(180deg, #1F232F 0%, #1F232F 100%);
+}
+.tw-nav-links li a{
+    font-weight: 500!important;
+}
+.tw-nav-links {
+    margin: auto;
+}
+
+.login-button-container{
+    cursor: pointer;
+    margin: 0px 20px 0px 0px;
+    border-radius: 16px 16px 16px 16px;
+    box-shadow: 7px 7px 15px 0px #060709;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color:white;
+    font-weight: bold;
+    transition-duration: .2s;
+    background-color: transparent;
+    background-image: radial-gradient(at top right, var(--e-global-color-accent) 0%, var(--e-global-color-secondary) 100%);
+    border-radius: 16px 16px 16px 16px;
+    padding: 20px 30px 20px 30px;
+}
+
+.login-button-container:hover{
+    transform: scale(0.9);
+    background-image: radial-gradient(at bottom left, var(--e-global-color-accent) 0%, var(--e-global-color-secondary) 100%);
+}
+
+.profile-button{
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    background-color: #ffffff1c;
+    padding:0px;
+    // border: 5px solid yellow;
+    padding-left: 15px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    position: relative;
+}
+
+.profile-button::before{
+    content: "Bienvenue";
+    position: absolute;
+    top: 1px;
+    left: 42px;
+    font-size: 10px;
+    color: #b6b6b6;
+}
+
+.profile-button{
+    color:#d8ded9;
+}
+.profile-button img{
+    margin-left: 8px;
+        // background-color: gray;
+        border:3px solid #fff3dec4;
+}
+
+.profile-button i{
+    margin-right: 12px;
+    margin-top: -5px;
+}
+
+.dropdown-item{
+    background-color: #1f232f!important;
+    color:white;
+}
+
+.dropdown-item:hover{
+    background-color: #262a36!important;
+
+}

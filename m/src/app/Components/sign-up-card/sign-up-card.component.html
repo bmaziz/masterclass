@@ -1,0 +1,80 @@
+<div class="tw-m-auto login-card-outline">
+  <div class="login-card-container">
+    <h2 class="style-gradient tw-text-3xl">
+      <span class="dynamic-text">Inscrivez-vous</span>
+    </h2>
+    <div class="tw-flex tw-container tw-flex-row gap-2 input-form">
+      <mdb-form-control class="form-white">
+        <input
+          mdbInput
+          type="text"
+          id="nom"
+          class="form-control"
+          [formControl]="nom"
+        />
+        <label mdbLabel class="form-label" for="nom">Nom</label>
+      </mdb-form-control>
+
+      <mdb-form-control class="form-white">
+        <input
+          mdbInput
+          type="text"
+          id="prenom"
+          class="form-control"
+          [formControl]="prenom"
+        />
+        <label mdbLabel class="form-label" for="prenom">Prénom</label>
+      </mdb-form-control>
+    </div>
+
+    <mdb-form-control class="form-white input-form">
+      <input
+        mdbInput
+        type="email"
+        id="typeEmail"
+        class="form-control"
+        [formControl]="email"
+      />
+      <label mdbLabel class="form-label" for="typeEmail">Adresse email</label>
+    </mdb-form-control>
+
+    <mdb-form-control class="form-white input-form">
+      <input
+        mdbInput
+        type="tel"
+        id="tel"
+        class="form-control"
+        [formControl]="numTel"
+      />
+      <label mdbLabel class="form-label" for="tel">Numéro de tel</label>
+    </mdb-form-control>
+
+    <mdb-form-control class="form-white input-form">
+      <input
+        mdbInput
+        type="password"
+        id="typePassword"
+        class="form-control"
+        [formControl]="password"
+      />
+      <label mdbLabel class="form-label" for="typePassword">Mot de passe</label>
+    </mdb-form-control>
+
+    <h3
+      class="tw-text-gray-200 tw-text-base tw-max-w-[300px] tw-text-left"
+      *ngIf="errorMessage"
+    >
+      😥 {{ errorMessage }}
+      <br />
+    </h3>
+    <button class="login-button-container" (click)="signup()">
+      S'INSCRIRE
+    </button>
+  </div>
+  <div class="tw-p-8 tw-py-2 tw-mx-auto">
+    <span> Vous avez déjà un compte ? </span>
+    <a routerLink="/login" class="tw-font-bold tw-underline tw-cursor-pointer"
+      >Connectez-vous</a
+    >
+  </div>
+</div>

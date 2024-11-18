@@ -1,0 +1,46 @@
+<section
+  class="tw-px-8 tw-min-h-lvh tw-container tw-flex tw-flex-col tw-justify-start tw-items-center -w-text-white tw-mx-auto tw-mb-8"
+  style="margin-top: 100px; color: white"
+>
+  <h1>Question {{ this.currentQuestion + 1 }}</h1>
+
+  <h5>
+    {{ quiz.questions[currentQuestion].question }}
+  </h5>
+
+  <div class="tw-grid tw-grid-cols-2 tw-gap-5">
+    <button
+      class="btn btn-primary"
+      *ngFor="let reponse of quiz.questions[currentQuestion].reponses"
+      [ngClass]="reponse.cocher ? 'btn-success' : 'btn-primary'"
+      (click)="
+        !reponse.cocher
+          ? cocherReponse(reponse.idReponse)
+          : decocherReponse(reponse.idReponse)
+      "
+    >
+      {{ reponse.reponse }}
+    </button>
+  </div>
+
+  <h3 class="tw-mt-8">
+    {{ this.currentQuestion + 1 }}/{{ quiz.questions.length }}
+  </h3>
+
+  <div class="tw-flex tw-flex-row tw-gap-8">
+    <button *ngIf="this.currentQuestion != 0" (click)="previousQuestion()">
+      <i class="fas fa-angle-left"></i> Question précedente
+    </button>
+
+    <button
+      *ngIf="this.currentQuestion < quiz.questions.length - 1"
+      (click)="nextQuestion()"
+    >
+      Question suivante <i class="fas fa-angle-right"></i>
+    </button>
+  </div>
+
+  <button class="btn btn-warning tw-mt-8" (click)="validerReponses()">
+    Valider réponses
+  </button>
+</section>

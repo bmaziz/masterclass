@@ -1,0 +1,100 @@
+<div class="mf-xl-container tw-container tw-flex tw-flex-row gap-4">
+  <div class="mf-container">
+    <div class="mf-card tw-cursor-pointer" (click)="redirectToDetails()">
+      <h2>{{ formation.accepter ? "Inscrit" : "En attente" }}</h2>
+
+      <h2 style="right: 35px; bottom: 15px" *ngIf="!formation.accepter">
+        <i class="mf-icone fas fa-user-clock"></i>
+      </h2>
+
+      <h2 style="right: 35px; bottom: 15px" *ngIf="formation.accepter">
+        <i class="mf-icone fas fa-user-check"></i>
+      </h2>
+
+      <p class="formation-titre">{{ formation.titre }}</p>
+      <div class="formation-datas">
+        <p>{{ formation.prix }} DT</p>
+        <p>
+          <i class="mf fa fa-calendar" aria-hidden="true"></i>
+          {{ this.formation.totalmois }} mois
+        </p>
+        <p>
+          <i class="fas fa-clock" aria-hidden="true"></i>
+          {{ this.formation.totalheure }} H
+        </p>
+      </div>
+
+      <div
+        class="mf-pic"
+        [style]="'background-image: url(' + formation.image + ');'"
+      ></div>
+
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <button
+        *ngIf="formation.accepter"
+        style="background-color: #2b26c3"
+      ></button>
+      <button
+        *ngIf="!formation.accepter"
+        style="background-color: #da4d1d"
+      ></button>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="style-gradient tw-text-3xl tw-font-bold">
+      <span class="dynamic-text">{{ formation.titre }}</span>
+    </h2>
+    <p class="tw-text-white">
+      {{ formation.description }}
+    </p>
+
+    <h3 class="next-session">PROCHAINE SESSION LE</h3>
+    <h2 class="tw-text-white date-text">
+      {{ formatDateToFrenchString(this.formation.dateDebut) | titlecase }}
+    </h2>
+
+    <a
+      class="login-button-container"
+      [routerLink]="'/formation/' + this.formation.idFormation"
+    >
+      <i class="fas fa-arrow-left tw-mr-2"></i>
+      Voir plus
+    </a>
+  </div>
+</div>

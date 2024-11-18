@@ -1,0 +1,139 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: "Poppins", sans-serif;
+    margin:0;
+    line-height: 1.5;
+    --webkit-font-smoothing: antialiased;
+    margin-top: 4rem!important;
+}
+*{
+    --e-global-color-accent: #1DCFFC;
+    --e-global-color-secondary: #AC01FF;
+    --e-global-color-accent: hsl(192, 97%, 55%);
+    --e-global-color-2b2b6b9: #1F232F;
+    --e-global-color-5b5a8c1: #313648;
+    --e-global-color-b034bb0: #222633;
+    --e-global-color-7d250bd: #3E454D;
+    --e-global-color-92bd292: #EDB60A;
+}
+
+body {	
+
+	background-size: 100%;
+    background-image: url("assets/images//background.jpg");
+    background-repeat: repeat-y;
+}
+
+body:before{
+	content:'';
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: -1;
+    background-image: linear-gradient(to right bottom, #1F232F 0%, #1F232F 100%);
+    opacity: .9;
+}
+
+
+body:after{
+    content:'';
+    position: absolute;
+	top: 0;
+	width: 100%;
+    height: 500px;
+	z-index: -2;
+    background: linear-gradient(to bottom, #1F232F, #1F232F, #22263300, #31364800 );
+	background-size: 100%;
+
+}
+
+
+
+a {
+    color:white!important;
+    font-weight: 500;
+}
+
+
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+
+
+.accordion-button:not(.collapsed) {
+    color: white!important;
+    background-color: transparent;
+    background-image: radial-gradient(at top left, var(--e-global-color-accent) 0%, var(--e-global-color-secondary) 100%);
+    border-style: solid;
+    border-width: 0px 0px 0px 0px;
+    border-color: var(--e-global-color-5b5a8c1);
+    border-radius: 16px 16px 16px 16px!important;
+    box-shadow: 5px 5px 10px 0px #0E1015;
+    overflow: hidden;
+}
+
+.accordion-button:not(.collapsed)::after {
+color:white!important;
+content: "\efac"!important;
+    transform: var(--mdb-accordion-btn-icon-transform);
+}
+
+.accordion-button::after{
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>")!important;
+
+}
+
+.accordion-header {
+    background-image: none!important;
+    background-color: transparent;
+    box-shadow: none!important;
+    overflow: hidden;
+}
+
+.accordion-button{
+    color: white;
+}
+
+.accordion-header:not(:first-child.collapsed){
+    color: var(--e-global-color-primary);
+    background-color: transparent;
+    background-image: radial-gradient(at top left, var(--e-global-color-accent) 0%, var(--e-global-color-secondary) 100%);
+    border-style: solid;
+    border-width: 0px 0px 0px 0px;
+    border-color: #313648;
+    border-radius: 16px 16px 16px 16px;
+    overflow: hidden;
+}
+
+.accordion-flush .accordion-item .accordion-button.collapsed {
+    border: 1px solid #313648;
+    border-radius: 16px 16px 16px 16px;
+}
+
+.accordion-flush .accordion-button:not(.collapsed) {
+    box-shadow: none!important;
+}
+
+.accordion-body{
+    color:#9aa0a7;
+}
+
+.accordion-item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none!important;
+}
+
+.form-outline .form-control {
+padding-top: 12px;
+padding-bottom: 12px;
+}
+
+
+.form-label {
+    padding-top:12px!important;
+}

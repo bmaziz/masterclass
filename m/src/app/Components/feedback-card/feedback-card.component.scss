@@ -1,0 +1,17 @@
+.feedback-container{
+    text-align: left;
+    background-color: #1F232F;
+    border-radius: 26px 26px 26px 26px;
+    box-shadow: 5px 5px 10px 0px #0E1015;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #AAAEBC;   
+    cursor: grab;
+    transition-duration: .2s;
+}
+
+.feedback-container:active{
+    border-color:gold;
+    transform: scale(0.95);
+
+}

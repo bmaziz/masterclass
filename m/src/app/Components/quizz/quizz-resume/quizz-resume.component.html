@@ -1,0 +1,48 @@
+<div
+  class="tw-bg-gray-900 tw-rounded-lg tw-p-8 tw-shadow-lg hover:tw-shadow-xl tw-transition tw-duration-300"
+>
+  <h2 class="tw-text-2xl tw-font-bold style-gradient mb-4">
+    <span class="dynamic-text">Résumé du Quiz</span>
+  </h2>
+  <div class="mb-4">
+    <h3 class="tw-text-lg tw-font-semibold text-white mb-2">
+      Anciennes tentatives :
+    </h3>
+
+    <p *ngIf="quizAttempts.length == 0">
+      Aucune tentative pour le moment. <br />
+      Tentez votre chance maintenant !😏
+    </p>
+    <ul class="tw-text-white">
+      <li
+        *ngFor="let attempt of quizAttempts"
+        class="tw-flex tw-items-center tw-justify-between tw-mb-2"
+      >
+        <span class="tw-mr-2">{{ attempt.date | date : "short" }}</span>
+        <span
+          [ngClass]="{
+            'tw-text-green-500': attempt.note >= 90,
+            'tw-text-red-500': attempt.note < 90
+          }"
+          class="tw-mr-2 extra"
+          >{{ attempt.note }}%</span
+        >
+        <span
+          class="tw-text-green-500"
+          *ngIf="attempt.note > 90; else failedIcon"
+        >
+          <i class="tw-mr-1 fas fa-check-circle tw-text-green-500"></i> Réussi
+        </span>
+        <ng-template #failedIcon>
+          <span class="tw-text-red-500">
+            <i class="tw-mr-1 fas fa-times-circle tw-text-red-600"></i> Échoué
+          </span>
+        </ng-template>
+      </li>
+    </ul>
+  </div>
+  <p class="mb-4">
+    Pour réussir ce quizz vous devez avoir un note de
+    <span class="tw-text-yellow-400"> 90 </span> ou plus.
+  </p>
+</div>

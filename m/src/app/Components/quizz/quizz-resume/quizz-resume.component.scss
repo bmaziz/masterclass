@@ -1,0 +1,82 @@
+
+:host {
+  display: block;
+}
+
+/* Ajout de styles personnalisés */
+:host {
+  transition: all 0.3s;
+}
+
+/* Style de survol */
+:host:hover {
+  transform: translateY(-5px);
+}
+
+/* Styles de la carte */
+.bg-card {
+  background-color: #1a202c;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Titre */
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+/* Liste des tentatives */
+.attempts-list {
+  list-style: none;
+  padding: 0;
+}
+
+.attempt-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.date {
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.score {
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.passed {
+  color: #4caf50; /* Vert */
+}
+
+.failed {
+  color: #f44336; /* Rouge */
+}
+
+.fa-icon {
+  font-size: 1rem;
+}
+
+
+.style-gradient {
+    background: linear-gradient(180deg,var(#e6f0ff) 0,var(#0058E6) 100%);
+    -moz-text-fill-color: transparent;
+    -o-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  
+  .dynamic-text {
+    background-color: transparent;
+    background-clip: text;
+    background-image: radial-gradient(at top left, #1DCFFC 30%, var(--e-global-color-secondary) 100%);
+  }
+  

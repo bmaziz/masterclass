@@ -1,0 +1,13 @@
+.accordion{
+    background-color: transparent!important;
+    border-color:white;
+}
+
+.accordion-button{
+    border-radius: 16px!important;
+    border: 1px solid #ffffff40!important;
+}
+
+.accordion-button:not(.collapsed) {
+background-color: red!important;
+}

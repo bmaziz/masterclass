@@ -1,0 +1,14 @@
+<mdb-accordion [flush]="true">
+  <mdb-accordion-item *ngFor="let programme of this.Formation.programme">
+    <ng-template mdbAccordionItemHeader>
+      <span>{{ programme.titre }}</span>
+    </ng-template>
+    <ng-template mdbAccordionItemBody>
+      <ul class="tw-list-disc">
+        <li *ngFor="let c of programme.contenus">
+          {{ c.contenu }}
+        </li>
+      </ul>
+    </ng-template>
+  </mdb-accordion-item>
+</mdb-accordion>

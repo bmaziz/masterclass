@@ -1,0 +1,50 @@
+<nav class="tw-bg-transparent tw-fixed tw-top-0 tw-p-4 tw-w-full">
+  <div class="tw-container tw-mx-auto tw-flex tw-justify-between tw-items-center">
+    <div class="tw-flex tw-items-center tw-container tw-justify-between">
+      <img src="assets/images/logo.webp" alt="Logo" class="tw-w-36" />
+      <div class="tw-hidden md:tw-flex tw-container tw-items-center tw-justify-items-center tw-w-fit tw-space-x-4">
+        <ul class="tw-flex tw-justify-center tw-items-center tw-space-x-4 tw-nav-links">
+          <li><a routerLink="/" class="tw-text-white">Accueil</a></li>
+          <li>
+            <a routerLink="/formations" class="tw-text-white">Formations</a>
+          </li>
+        </ul>
+
+        <a *ngIf="!currentUser" class="login-button-container" routerLink="/login">S'inscrire</a>
+        <div *ngIf="currentUser != null" mdbDropdown class="dropdown">
+          <button type="button" id="dropdownMenuButton" class="profile-button" aria-expanded="false" mdbDropdownToggle>
+            <i class="fas fa-sort-down"></i>
+            <span>
+              {{ currentUser.prenom }}
+            </span>
+            <img [src]="currentUser.image" alt="profile pic"
+              class="tw-w-12 tw-rounded-full cover-full" />
+          </button>
+          <ul mdbDropdownMenu class="dropdown-menu" style="margin-right: 50px" aria-labelledby="dropdownMenuButton">
+            <li>
+              <a class="dropdown-item" routerLink="/mes-formations">
+                Mes formations</a>
+            </li>
+            <li>
+              <a class="dropdown-item tw-cursor-pointer" (click)="openSettingsModal()">Paramètres</a>
+            </li>
+            <li>
+              <button class="dropdown-item" (click)="this.logout()">
+                Se déconnecter
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="md:tw-hidden">
+      <!-- Bouton de burger pour la version mobile -->
+      <button id="burger-btn" class="tw-text-white tw-focus:tw-outline-none">
+        <svg class="tw-w-6 tw-h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>

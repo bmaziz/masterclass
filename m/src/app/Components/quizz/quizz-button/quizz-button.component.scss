@@ -1,0 +1,40 @@
+// Définition des variables de couleur
+$primary-color: #ac01ff;
+$hover-color: #1DCFFC;;
+
+
+// Styles des boutons
+.quizz-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    background-color: $primary-color;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 5px 5px 0px white;
+    transition-duration: .5s;
+
+    &:hover {
+      box-shadow: 2px 2px 2px rgb(150, 136, 136);
+      transform: translateX(5px);
+
+    }
+  
+    &:focus {
+      outline: none;
+    }
+  
+    &:active {
+      transform: translateY(1px);
+    }
+  
+    // Icône
+    .icon {
+      margin-right: 5px;
+    }
+  }

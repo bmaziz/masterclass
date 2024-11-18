@@ -1,0 +1,38 @@
+<section
+  class="tw-px-8 tw-min-h-lvh tw-container tw-flex tw-flex-col tw-justify-start tw-items-center -w-text-white tw-mx-auto tw-mb-8"
+  style="margin-top: 100px"
+>
+  <!-- Affichage du spinner de chargement lorsque les données sont en cours de chargement -->
+  <div
+    *ngIf="isLoading"
+    class="tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-3"
+  >
+    <div class="tw-spinner-border tw-text-[#AC01FF]" role="status">
+      <span class="tw-visually-hidden">Loading...</span>
+    </div>
+    <h2 class="tw-animate-bounce">Chargement en cours....</h2>
+  </div>
+
+  <!-- Affichage du message d'erreur en cas d'erreur -->
+  <div *ngIf="error" class="tw-text-red-500">
+    {{ error }}
+  </div>
+
+  <!-- Affichage des données de la formation lorsque disponibles -->
+  <div *ngIf="!isLoading && !error">
+    <div class="tw-flex tw-container tw-flex-col">
+      <h1 class="tw-text-white tw-font-bold">
+        QUIZZ :
+        <span class="tw-text-yellow-400">
+          
+        </span>
+      </h1>
+
+      <app-quizz-resume [quizz]="this.quizz"></app-quizz-resume>
+
+      <a [routerLink]="'/questions'" class="button-anon-pen tw-mt-2">
+        <span>Commencer le Quizz</span>
+      </a>
+    </div>
+  </div>
+</section>

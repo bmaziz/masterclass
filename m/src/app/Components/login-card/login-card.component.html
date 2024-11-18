@@ -1,0 +1,47 @@
+<div class="tw-m-auto login-card-outline">
+  <div class="login-card-container">
+    <h2 class="style-gradient tw-text-3xl">
+      <span class="dynamic-text">Connectez-vous</span>
+    </h2>
+
+    <mdb-form-control class="form-white input-form">
+      <input
+        mdbInput
+        type="email"
+        id="typeEmail"
+        class="form-control"
+        [formControl]="email"
+      />
+      
+      <label mdbLabel class="form-label" for="typeEmail">Adresse email</label>
+    </mdb-form-control>
+
+    <mdb-form-control class="form-white input-form">
+      <input
+        mdbInput
+        type="password"
+        id="typePassword"
+        class="form-control"
+        [formControl]="password"
+      />
+      <label mdbLabel class="form-label" for="typePassword">Mot de passe</label>
+    </mdb-form-control>
+
+    <h3
+      class="tw-text-gray-200 tw-text-base tw-max-w-[300px] tw-text-left"
+      *ngIf="errorMessage"
+    >
+      😥 {{ errorMessage }}
+      <br />
+    </h3>
+    <button class="login-button-container" (click)="connexion()">
+      CONNEXION
+    </button>
+  </div>
+  <div class="tw-p-8 tw-py-2 tw-mx-auto">
+    <span> Vous n'avez pas de compte ? </span>
+    <a routerLink="/sign-up" class="tw-font-bold tw-underline tw-cursor-pointer"
+      >Inscrivez-vous</a
+    >
+  </div>
+</div>

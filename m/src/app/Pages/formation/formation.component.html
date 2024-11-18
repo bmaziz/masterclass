@@ -1,0 +1,90 @@
+<section
+  class="tw-px-8 tw-min-h-lvh tw-container tw-flex tw-flex-col tw-justify-start tw-items-center -w-text-white tw-mx-auto tw-mb-8"
+  style="margin-top: 100px">
+  <!-- Affichage du spinner de chargement lorsque les données sont en cours de chargement -->
+  <div *ngIf="isLoading" class="tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-3">
+    <div class="tw-spinner-border tw-text-[#AC01FF]" role="status">
+      <span class="tw-visually-hidden">Loading...</span>
+    </div>
+    <h2 class="tw-animate-bounce">Chargement en cours....</h2>
+  </div>
+
+  <!-- Affichage du message d'erreur en cas d'erreur -->
+  <div *ngIf="error" class="tw-text-red-500">
+    {{ error }}
+  </div>
+
+  <!-- Affichage des données de la formation lorsque disponibles -->
+  <div *ngIf="!isLoading && !error">
+    <header>
+      <div class="custom-card-outline">
+        <div class="custom-card-container">
+          <div class="header-container tw-p-2 md:tw-p-10 tw-mx-auto">
+            <h1 class="animated-text">
+              <span class="dynamic-wrapper style-gradient">
+                <span class="dynamic-text"> {{formation.titre}} </span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" preserveAspectRatio="none">
+                  <path class="style-color" d="M3,77.5s200.54-11,493,0" transform="translate(-2.75 -68.11)"></path>
+                </svg></span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="tw-container tw-flex tw-flex-col md:tw-flex-row gap-4 tw-my-4 tw-mt-16 tw-relative">
+      <div class="tw-flex-1 flex flex-col tw-container gap-2">
+        <h1 class="style-gradient tw-text-4xl tw-mb-4">
+          <span class="dynamic-text">À propos de la formation</span>
+        </h1>
+        <p class="tw-text-white">
+          {{ formation.apropos }}
+        </p>
+
+        <div class="tw-container tw-flex tw-flex-col md:tw-flex-row tw-gap-4 tw-text-white">
+          <p>
+            Obtenez les outils et les compétences dont vous avez besoin pour
+            lancer votre carrière en tant que {{ formation.titre }} .
+          </p>
+          <div class="tw-container tw-flex-col tw-gap-0">
+            <app-progress-bar [name]="'Pratique'"></app-progress-bar>
+            <app-progress-bar [name]="'Des Projets'"></app-progress-bar>
+            <app-progress-bar [name]="'Contenu riche et interactif'"></app-progress-bar>
+          </div>
+        </div>
+        <div class="tw-py-6">
+          <hr />
+        </div>
+
+        <div class="tw-flex-1 flex flex-col tw-container gap-2">
+          <h1 class="style-gradient tw-text-4xl tw-mb-4">
+            <span class="dynamic-text">Programme</span>
+          </h1>
+          <app-formation-program [Formation]="this.formation"></app-formation-program>
+        </div>
+
+        <div class="tw-py-6">
+          <hr />
+        </div>
+        <div *ngIf="currentUserSubscribed == 2" class="tw-flex-1 flex flex-col tw-container gap-2">
+          <h1 class="style-gradient tw-text-4xl tw-mb-4">
+            <span class="dynamic-text">Quizz </span>
+          </h1>
+          <p class="tw-text-white">
+            Testez vos connaissances dans des quizz spécialement conçus par nos
+            formateurs.
+          </p>
+          <div class="tw-container tw-flex tw-flex-col tw-gap-6">
+            <app-quizz-button *ngFor="let quiz of quizs; let i = index" [titre]="'Quizz numéro ' + (i + 1)"
+              [id]="quiz.idQuiz" [numero]="(i+1)"></app-quizz-button>
+          </div>
+          <h4 *ngIf="!quizs || quizs.length == 0">
+            Aucun Quizz disponible pour cette formation. 😣
+          </h4>
+        </div>
+      </div>
+
+      <app-formation-subscribe-card [formation]="this.formation"></app-formation-subscribe-card>
+    </div>
+  </div>
+</section>

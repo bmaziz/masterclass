@@ -1,0 +1,55 @@
+<div class="page-container tw-min-h-lvh tw-mt-32 tw-px-4 tw-text-white">
+  <header>
+    <div class="custom-card-outline">
+      <div class="custom-card-container">
+        <div class="header-container tw-p-2 md:tw-p-10 tw-mx-auto">
+          <h1 class="animated-text">
+            <span class="normal-text style-color">Des programmes faits </span
+            ><span class="dynamic-wrapper style-gradient"
+              ><span class="dynamic-text">sur mesure !</span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 500 150"
+                preserveAspectRatio="none"
+              >
+                <path
+                  class="style-color"
+                  d="M3,77.5s200.54-11,493,0"
+                  transform="translate(-2.75 -68.11)"
+                ></path></svg></span
+            ><span class="normal-text style-color"></span>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div
+    class="tw-flex tw-container tw-flex-center tw-flex-col tw-items-center tw-justify-center"
+  >
+    <h2 class="style-gradient tw-text-2xl tw-mt-24 tw-mb-4">
+      <span class="dynamic-text">Les métiers de l'avenir</span>
+    </h2>
+
+    <h1 class="style-gradient tw-text-5xl tw-mb-4">
+      <span class="dynamic-text">Transformez votre passion en carrière</span>
+    </h1>
+
+    <p class="tw-text-gray-500">
+      Choisissez la formation qui vous convient et rejoignez-nous dès
+      maintenant.
+    </p>
+  </div>
+
+  <div
+    class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 xl:tw-grid-cols-3 tw-gap-4 tw-mt-8 tw-mb-12"
+  >
+    <app-formation-card-2
+      *ngFor="let formation of formations; let i = index"
+      [titre]="formation.titre"
+      [image]="formation.image"
+      [description]="formation.description"
+      [id]="formation.idFormation"
+    ></app-formation-card-2>
+  </div>
+</div>
